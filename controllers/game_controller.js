@@ -2,13 +2,20 @@ var Game = require('../models/game.js')
 
 module.exports = {
   all_games: function(req, res){
-    Game.find({}).populate('category').exec(function(err, games){
+    Game.find({})
+    .populate({path: 'category', select: 'name -_id'})
+    .populate({path: 'reviews', select: 'review_content rating reviewer -_id', populate: {
+      path: 'reviewer', select: 'username -_id'
+    }})
+    .exec(function(err, games){
       if (err) throw err
       res.json({success: true, games: games})
     })
   },
   one_game: function(req, res){
-    Game.findById(req.params.id).populate('category').exec(function(err, game){
+    Game.findById(req.params.id)
+    .populate('category')
+    .exec(function(err, game){
       if (err) throw err
       res.json({success: true, game: game})
     })
@@ -21,28 +28,15 @@ module.exports = {
     })
   },
   delete_game: function(req, res){
-    Game.findById(req.params.id, function(err, game){
+    Game.findOneAndRemove({_id: req.params.id}, function(err, deleted_game){
       if (err) throw err
-      Game.remove({_id: game._id}, function(err){
-        if (err) throw err
-        res.json({success: true, message: 'game successfully deleted'})
-      })
+      res.json({success: true, message: 'game successfully deleted', deleted_game: deleted_game})
     })
   },
   edit_game_info: function(req, res){
-    Game.findById(req.params.id).exec(function(err, game){
+    Game.findOneAndUpdate({_id: req.params.id}, req.body, {new: true}, function(err, updated_game){
       if (err) throw err
-      game.name = req.body.name
-      game.photo = req.body.photo
-      game.gameplay_video = req.body.gameplay_video
-      game.game_summary = req.body.game_summary
-      game.average_user_rating = req.body.average_user_rating
-      game.reviews = req.body.reviews
-      game.category = req.body.category
-      game.save(function(err, updated_game){
-        if (err) throw err
-        res.json({success: true, message: 'game information updated', game: updated_game})
-      })
+      res.json({success: true, message: 'game information updated', game: updated_game})
     })
   }
 }
