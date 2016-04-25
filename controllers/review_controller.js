@@ -21,23 +21,15 @@ module.exports = {
     })
   },
   delete_review: function(req, res){
-    Review.findById(req.params.id, function(err, review){
+    Review.findOneAndRemove({_id: req.params.id}, function(err){
       if (err) throw err
-      Review.remove({_id: review._id}, function(err){
-        if (err) throw err
-        res.json({success: true, message: 'review deleted'})
-      })
+      res.json({message: 'review deleted'})
     })
   },
   edit_review: function(req, res){
-    Review.findById(req.params.id).exec(function(err, review){
+    Review.findOneAndUpdate({_id: req.params.id}, req.body, {new: true}, function(err, review){
       if (err) throw err
-      review.review_content = req.body.review_content
-      review.rating = req.body.rating
-      review.save(function(err, updated_review){
-        if (err) throw err
-        res.json({success: true, message: 'review updated', review: updated_review})
-      })
+      res.json({message: 'review updated', review: review})
     })
   }
 }

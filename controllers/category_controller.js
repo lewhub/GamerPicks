@@ -2,13 +2,15 @@ var Category = require('../models/category.js')
 
 module.exports = {
   all_categories: function(req, res){
-    Category.find({}).exec(function(err, categories){
+    Category.find({})
+    .populate({path: 'games', select: 'name game_summary'})
+    .exec(function(err, categories){
       if (err) throw err
       res.json({success: true, categories: categories})
     })
   },
   one_category: function(req, res){
-    Category.findById(req.params.id).exec(function(err, category){
+    Category.findById(req.params.id).populate('games').exec(function(err, category){
       if (err) throw err
       res.json({success: true, category: category})
     })
@@ -34,7 +36,6 @@ module.exports = {
       if (err) throw err
       category.name = req.body.name
       category.category_photo = req.body.category_photo
-      category.games = req.body.games
       category.save(function(err, updated_category){
         console.log(updated_category)
         if (err) throw err
