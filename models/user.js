@@ -3,6 +3,7 @@ var
   Schema = mongoose.Schema,
   Review = require('./review.js')
 
+
 var user_schema = Schema({
   username: {type: String, unique: true, required: true},
   email: {type: String, unique: true, required: true},
@@ -22,5 +23,6 @@ user_schema.pre('findOneAndRemove', function(next){
 })
 
 var User = mongoose.model('User', user_schema)
+//console.log(User)
 
 module.exports = User

@@ -1,8 +1,7 @@
 var
   mongoose = require('mongoose'),
   Schema = mongoose.Schema,
-  Game = require('./game.js'),
-  User = require('./user.js')
+  Game = require('./game.js')
 
 var review_schema = Schema({
   reviewer: {type: Schema.Types.ObjectId, ref: 'User', required: true},
@@ -12,6 +11,9 @@ var review_schema = Schema({
 })
 
 review_schema.post('save', function(review){
+  var User = require('./user.js')
+  // console.log(1, User)
+  // console.log(2, Game)
   Game.findOne({_id: review.game_reviewed}, function(err, game){
     if (err) throw err
     game.reviews.push(review)
@@ -28,10 +30,14 @@ review_schema.post('save', function(review){
 // also called when you delete a user
 review_schema.pre('findOneAndRemove', function(next){
   var self = this
+  var User = require('./user.js')
   self.findOne({}, function(err, review){
     if (err) throw err
     console.log(review, '<< this is the review that will be deleted')
     User.findOne({_id: review.reviewer}, function(err, user){
+      console.log(1, user)
+      console.log(2, review)
+      console.log(3, review._id)
       if (err) throw err
       var i = user.reviews.indexOf(Object(review._id))
       user.reviews.splice(i, 1)
