@@ -45,7 +45,7 @@ app.use('/api/reviews', review_routes)
 app.use('/api/games', game_routes)
 app.use('/api/categories', category_routes)
 
-app.listen(3000, function(err){
+app.listen(process.env.PORT, function(err){
   if (err) throw err
   console.log('listening on port')
 })
