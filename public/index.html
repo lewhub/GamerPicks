@@ -13,6 +13,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
     <script src="js/angular.js"></script>
     <script src="js/angular-ui-router.js"></script>
+    <script src="http://apis.google.com/js/client.js?onload=init"></script>
     <!-- end of external js -->
     <script src="js/app.js"></script>
     <script src="js/config.js"></script>
@@ -27,6 +28,7 @@
     <!-- factories  -->
     <script src="js/factories/user_factory.js"></script>
     <script src="js/factories/auth_factory.js"></script>
+    <script src="js/factories/game_factory.js"></script>
     <script src="js/factories/auth_interceptor.js"></script>
     <!-- end of factories -->
   </head>
@@ -36,10 +38,11 @@
       <div class="nav-wrapper">
         <a ui-sref="featuredGames" class="brand-logo">Gamer Picks</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a ui-sref="oneGame">All Games</a></li>
           <li ng-if="!gc.isAuthed()"><a ui-sref="signup">Sign Up</a></li>
           <li ng-if="!gc.isAuthed()"><a ui-sref="login">Login</a></li>
           <li ng-if="gc.isAuthed()"><a ng-click="gc.logout()">Logout</a></li>
-          <li><a ui-sref="profile({id: gc.currentUserID})">Profile</a></li>
+          <li><a ui-sref="profile">Profile</a></li>
           <li><a ui-sref="categories">Categories</a></li>
           <li><a ui-sref="featuredGames">Home</a></li>
         </ul>
@@ -49,5 +52,22 @@
     <div class="container">
       <div ui-view></div>
     </div>
+
   </body>
+  <script>
+    // function init(){
+    //   console.log('fsdlkfj')
+    // gapi.client.setApiKey("AIzaSyAX1QXMrg42klwctqHiXUXyXkDxfLuHs0k")
+    // var restRequest = gapi.client.request({
+    // 'path': '/plus/v1/activities',
+    // 'params': {'query': 'Google+', 'orderBy': 'best'}
+    // });
+    // restRequest.then(function(resp) {
+    // console.log(resp.result);
+    // }, function(reason) {
+    // console.log('Error: ' + reason.result.error.message);
+    // });
+    // }
+
+  </script>
 </html>
