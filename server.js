@@ -11,7 +11,9 @@ var
   category_routes = require('./routes/category_routes.js'),
   dotenv = require('dotenv').load({silent: true})
 console.log(9000, process.env)
-mongoose.connect('mongodb://localhost/gamerpicks', function(err){
+var LOCAL_URL = 'mongodb://localhost/gamerpicks'
+//
+mongoose.connect(process.env.DB_URL, function(err){
   if (err) throw err
   console.log('connected to mongodb')
 })
