@@ -39,7 +39,7 @@
         .state('oneGame', {
           url: '/games/:id',
           templateUrl: 'partials/one_game.html',
-          controller: 'GameCtrl as gc'
+          controller: 'GameCtrl as gcc'
         })
           // Review States
         .state('newReview', {
