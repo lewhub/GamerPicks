@@ -8,7 +8,8 @@ var
   user_routes = require('./routes/user_routes.js'),
   review_routes = require('./routes/review_routes.js'),
   game_routes = require('./routes/game_routes.js'),
-  category_routes = require('./routes/category_routes.js')
+  category_routes = require('./routes/category_routes.js'),
+  dotenv = require('dotenv').load({silent: true})
 
 mongoose.connect('mongodb://localhost/gamerpicks', function(err){
   if (err) throw err
