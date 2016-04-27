@@ -10,7 +10,7 @@ var
   game_routes = require('./routes/game_routes.js'),
   category_routes = require('./routes/category_routes.js'),
   dotenv = require('dotenv').load({silent: true})
-
+console.log(9000, process.env)
 mongoose.connect('mongodb://localhost/gamerpicks', function(err){
   if (err) throw err
   console.log('connected to mongodb')
@@ -32,5 +32,5 @@ app.use('/api/categories', category_routes)
 
 app.listen(process.env.PORT, function(err){
   if (err) throw err
-  console.log('listening on port ' + process.env.PORT)
+  console.log('listening on port')
 })
