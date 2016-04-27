@@ -1,0 +1,6 @@
+<h1>Username: {{uc.user.username}}</h1>
+<h3>Email: {{uc.user.email}}</h3>
+<h2>Reviews</h2>
+<ul ng-repeat="review in uc.user.reviews" class="collection">
+  <li class="collection-item">{{ review }}</li>
+</ul>

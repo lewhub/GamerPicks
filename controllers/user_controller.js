@@ -33,8 +33,8 @@ module.exports = {
     console.log(1, req.body)
     User.findOne({ email: req.body.email }).exec(function(err, user){
       if (err) throw err
-      if (!user) return res.json({ success: false, messgae: 'No user found with that email.'})
-      if (user && !user.validatePassword) return res.json({ success: false, message: 'user found with that email but incorrect password provided.'})
+      if (!user) return res.json({ success: false, message: 'No user found with that email.'})
+      if (user && !user.validatePassword(req.body.password)) return res.json({ success: false, message: 'user found with that email but incorrect password provided.'})
       var token = jwt.sign(user.toObject(), process.env.SECRET, { expiresIn: 6000 })
       res.json({ success: true, message: 'user found and the correct password was provided. Token granted.', token: token, user: user })
     })

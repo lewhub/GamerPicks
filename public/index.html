@@ -1,95 +1,53 @@
 <!DOCTYPE html>
 <html>
   <head>
-  	<link rel="stylesheet" type="text/css" href="style.css">
-  	<link href='https://fonts.googleapis.com/css?family=Asap' rel='stylesheet' type='text/css'>
-  	<link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
-    <meta charset="utf-8">
     <title>Gamer Picks</title>
+    <!-- external css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+    <!-- end of external css  -->
+    <!-- css  -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- end of css  -->
+    <!-- external js -->
+    <script src="js/jquery-2.2.3.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+    <script src="js/angular.js"></script>
+    <script src="js/angular-ui-router.js"></script>
+    <!-- end of external js -->
+    <script src="js/app.js"></script>
+    <script src="js/config.js"></script>
+    <!-- controllers  -->
+    <script src="js/controllers/global.js"></script>
+    <script src="js/controllers/home.js"></script>
+    <script src="js/controllers/game.js"></script>
+    <script src="js/controllers/category.js"></script>
+    <script src="js/controllers/review.js"></script>
+    <script src="js/controllers/user.js"></script>
+    <!-- end of controllers -->
+    <!-- factories  -->
+    <script src="js/factories/user_factory.js"></script>
+    <script src="js/factories/auth_factory.js"></script>
+    <script src="js/factories/auth_interceptor.js"></script>
+    <!-- end of factories -->
   </head>
-  <body>
-  <div class="top-banner">
-  <div class="login">
-  <input type="text" class="form-control" placeholder="Username or Email">
-  <input type="button" value="Log In">
-  <input type="text" class="form-control" placeholder="Password"><input type="button" value="Sign Up">
-  </div>
-    <div class="title"><h1><a href="index.html">GamerPicks</a></h1></div>
-    <div id="nav" class="nav nav-bar" role="navigation">
-    <ul>
-    <li><a ui-sref="news.html">News</a></li>
-    <li><a href="categories.html">Categories</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="contact.html">Contact</a></li>
-    </ul>
+  <body ng-app="GamerPicks" ng-controller="GlobalCtrl as gc">
+    <!-- nav bar  -->
+    <nav id="nav-bar">
+      <div class="nav-wrapper">
+        <a ui-sref="featuredGames" class="brand-logo">Gamer Picks</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li ng-if="!gc.isAuthed()"><a ui-sref="signup">Sign Up</a></li>
+          <li ng-if="!gc.isAuthed()"><a ui-sref="login">Login</a></li>
+          <li ng-if="gc.isAuthed()"><a ng-click="gc.logout()">Logout</a></li>
+          <li><a ui-sref="profile({id: gc.currentUserID})">Profile</a></li>
+          <li><a ui-sref="categories">Categories</a></li>
+          <li><a ui-sref="featuredGames">Home</a></li>
+        </ul>
+      </div>
+    </nav>
+    <!-- end of nav bar  -->
+    <div class="container">
+      <div ui-view></div>
     </div>
-    </div>
-<br></br>
-<br></br>
-
-<div class="trending" id="carousel">
-<h2>Trending PC Games</h2>
-<div class="bigbox">
-<div class="boxes">
-	<p>
-	<b>League of Legends</b>
-<br></br>
-<br></br>
-    Average Rating: 8.9/10
-<br></br>
-	Mentions: 411,056
-	</p>
-</div>
-<div class="boxes">
-	<p>
-	<b>Dota 2</b>
-<br></br>
-<br></br>
-	Average Rating: 8.0/10
-<br></br>
-	Mentions: 298,614
-	</p>
-</div>
-<div class="boxes">
-	<p>
-	<b>Call of Duty</b>
-<br></br>
-<br></br>
-	Average Rating: 7.8/10
-<br></br>
-	Mentions: 249,222
-	</p>
-</div>
-<div class="boxes">
-	<p>
-	<b>Counter Strike: Global Offensive</b>
-<br></br>
-<br></br>
-	Average Rating: 8.2/10
-<br></br>
-	Mentions: 210,520
-	</p>
-</div>
-<div class="boxes">
-	<p>
-	<b>World of Warcraft</b>
-<br></br>
-<br></br>
-	Average Rating: 7.7/10
-<br></br>
-	Mentions: 178,355
-	</p>
-</div>
-<div class="boxes">
-	<p>
-	<b>Dark Souls III</b>
-<br></br>
-<br></br>
-	Average Rating: 7.5/10
-<br></br>
-	Mentions: 164,010
-	</p>
-</div>
-</div>
   </body>
 </html>
