@@ -23,9 +23,11 @@
     "cors": "^2.7.1",
     "dotenv": "^2.0.0",
     "express": "^4.13.4",
+    "https": "^1.0.0",
     "jsonwebtoken": "^5.7.0",
     "mongoose": "^4.4.12",
     "morgan": "^1.7.0",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "string_decoder": "^0.10.31"
   }
 }
