@@ -7,9 +7,12 @@
     function GameCtrl(gameFactory){
       var self = this
       self.title = 'all games'
-      
+
       gameFactory.allGames().success(function(results){
         console.log(results)
+      })
+      .error(function(){
+        console.log('results')
       })
 
 

@@ -1,4 +1,5 @@
-var Game = require('../models/game.js')
+var
+    Game = require('../models/game.js')
 
 module.exports = {
   all_games: function(req, res){
