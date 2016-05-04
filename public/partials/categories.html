@@ -1,1 +1,4 @@
 <h1>{{cc.title}}</h1>
+<div ng-repeat="category in cc.categories" class="collection">
+  <a ui-sref="oneCategory({id: category._id})" class="collection-item">{{ category.name }}</a>
+</div>

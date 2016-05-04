@@ -9,6 +9,7 @@ var game_schema = Schema({
   gameplay_video: String,
   game_summary: {type: String, required: true},
   average_user_rating: Number,
+  api_id: Number,
   reviews: [{type: Schema.Types.ObjectId, ref: 'Review'}],
   category: {type: Schema.Types.ObjectId, ref: 'Category', required: true}
 })

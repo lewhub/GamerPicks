@@ -24,8 +24,10 @@
     <script src="js/controllers/category.js"></script>
     <script src="js/controllers/review.js"></script>
     <script src="js/controllers/user.js"></script>
+    <script src="js/controllers/category_detail.js"></script>
     <!-- end of controllers -->
     <!-- factories  -->
+    <script src="js/factories/category_factory.js"></script>
     <script src="js/factories/user_factory.js"></script>
     <script src="js/factories/auth_factory.js"></script>
     <script src="js/factories/game_factory.js"></script>
@@ -39,6 +41,7 @@
         <a ui-sref="featuredGames" class="brand-logo">Gamer Picks</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li><a ui-sref="oneGame">All Games</a></li>
+          <li><a ui-sref="categories">Categories</a></li>
           <li ng-if="!gc.isAuthed()"><a ui-sref="signup">Sign Up</a></li>
           <li ng-if="!gc.isAuthed()"><a ui-sref="login">Login</a></li>
           <li ng-if="gc.isAuthed()"><a ng-click="gc.logout()">Logout</a></li>
@@ -69,6 +72,5 @@
     // console.log('Error: ' + reason.result.error.message);
     // });
     // }
-
   </script>
 </html>

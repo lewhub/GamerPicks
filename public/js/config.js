@@ -33,7 +33,7 @@
         .state('oneCategory', {
           url: '/categories/:id',
           templateUrl: 'partials/one_category.html',
-          controller: 'CategoryCtrl as cc'
+          controller: 'CategoryDetailCtrl as ccd'
         })
         // Game State
         .state('oneGame', {
