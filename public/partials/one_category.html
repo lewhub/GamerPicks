@@ -1,0 +1,7 @@
+<h1>{{ ccd.category.name }}</h1>
+<hr>
+<div class="collection with-header">
+  <div style="text-align:center" class="collection-header"><h3>Games</h3></div>
+  <div ng-if="ccd.category.games.length === 0" style="text-align: center" class="collection-item"><h5>This category has no games yet.</h5></div>
+  <a ng-repeat="game in ccd.category.games" ui-sref="oneGame({id: game._id})" class="collection-item">{{ game.name }}</a>
+</div>

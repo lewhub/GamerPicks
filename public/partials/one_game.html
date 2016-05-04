@@ -1,3 +1,11 @@
-<h1>{{gcc.title}}</h1>
-<h1>{{gcc.theData}}</h1>
-<h1>{{gcc.theErr}}</h1>
+<h1>{{gcc.game_result.name}}</h1>
+<img style="width: 300px; height: auto;" ng-src="http:{{gcc.game_result.photo}}">
+<h3 style="font-size: 18px;">Summary:<br>{{gcc.game_result.game_summary}}</h3>
+<div class="collection with-header">
+  <div style="text-align:center" class="collection-header"><h3>Reviews</h3></div>
+  <div style="font-size: 20px;" class="collection-item">{{gcc.game_result.reviews.length}}</div>
+</div>
+<div style="border: 2px solid black">
+  <h4>Category</h4>
+  <a ui-sref="oneCategory({id: gcc.game_result.category._id})">{{gcc.game_result.category.name}}</a>
+</div>

@@ -2,16 +2,31 @@
   angular.module('GamerPicks')
     .factory('GameFactory', GameFactory)
 
-    GameFactory.$inject = ['$http']
+    GameFactory.$inject = ['$http', '$q']
 
-    function GameFactory($http){
-      var apiUrl = "https://www.igdb.com/api/v1/games/?token=G5HDgxEsCEb0QRrZEIUtt3zgdcqbm-Ib3gqRa0MdO1s&callback=JSON_CALLBACK"
+    function GameFactory($http, $q){
+      var apiUrl = "/api/games/api/"
+      var gameUrl = "/api/games/"
+      var deferred = $q.defer()
       var service = {
-        allGames: allGames
+        allGames: allGames,
+        show: show,
+        create: create,
+        show_game: show_game
       }
       return service
-      function allGames(){
-        return $http.jsonp(apiUrl)
+      function allGames(limit, offset){
+        return $http.get(apiUrl + "list/" + limit + "/" + offset + "/")
       }
+      function show(id){
+        return $http.get(apiUrl + id)
+      }
+      function create(data){
+        return $http.post(gameUrl, data)
+      }
+      function show_game(id){
+        return $http.get(gameUrl + id)
+      }
+
     }
 })()

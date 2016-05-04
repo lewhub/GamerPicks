@@ -42,5 +42,39 @@ module.exports = {
         res.json({success: true, message: 'category updated', category: updated_category})
       })
     })
+  },
+  create_21: function(req, res){
+    var categories = [
+      {name: "Adventure"},
+      {name: "Arcade"},
+      {name: "Fighting"},
+      {name: "Indie"},
+      {name: "Music"},
+      {name: "Pinball"},
+      {name: "Platform"},
+      {name: "Point-and-click"},
+      {name: "Racing"},
+      {name: "Real Time Strategy (RTS)"},
+      {name: "Role-playing (RPG)"},
+      {name: "Shooter"},
+      {name: "Simulator"},
+      {name: "Sport"},
+      {name: "Strategy"},
+      {name: "Tactical"},
+      {name: "Turn-based strategy (TBS)"},
+      {name: "Hack and slash/Beat 'em up"},
+      {name: "Other"},
+      {name: "Quiz/Trivia"},
+      {name: "Puzzle"}
+    ]
+    Category.create(categories, function(err, data){
+      if (err) throw err
+      res.json({message: '21 categories created', categories: data})
+    })
+  },
+  delete_all: function(req, res){
+    Category.remove({}, function(err){
+      res.json({message: 'all categories removed'})
+    })
   }
 }

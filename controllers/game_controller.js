@@ -23,6 +23,7 @@ module.exports = {
   },
   create_game: function(req, res){
     var new_game = new Game(req.body)
+    console.log(new_game)
     new_game.save(function(err, saved_game){
       if (err) throw err
       res.json({success: true, message: 'new game created', game: saved_game})
@@ -38,6 +39,11 @@ module.exports = {
     Game.findOneAndUpdate({_id: req.params.id}, req.body, {new: true}, function(err, updated_game){
       if (err) throw err
       res.json({success: true, message: 'game information updated', game: updated_game})
+    })
+  },
+  remove_all: function(req, res){
+    Game.remove({}, function(err){
+      res.json({message: 'deleted all games'})
     })
   }
 }

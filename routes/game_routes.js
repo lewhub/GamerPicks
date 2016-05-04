@@ -3,6 +3,8 @@ var
   game_router = express.Router(),
   game_ctrl = require('../controllers/game_controller.js')
 
+
+game_router.get('/deleteAll', game_ctrl.remove_all)
 game_router.route('/')
   .get(game_ctrl.all_games)
   .post(game_ctrl.create_game)
