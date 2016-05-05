@@ -40,5 +40,5 @@ app.use('/api/games/api', game_api_routes)
 
 app.listen(process.env.PORT, function(err){
   if (err) throw err
-  console.log('listing on port')
+  console.log('listening on port')
 })

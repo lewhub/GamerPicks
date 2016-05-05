@@ -1,4 +1,4 @@
-#nav-bar {
+#nav-bar-nav {
   background-color: #F67358;
 }
 .bio-box {
@@ -8,4 +8,48 @@
 .memo {
   text-align: center;
   font-size: 18px;
+}
+#hammy {
+  display: none;
+}
+#nav-mobile-ul {
+  position: absolute;
+  right: 0;
+}
+.brand-logo-a {
+  position: absolute;
+  color: #fff;
+  display: inline-block;
+  font-size: 2.1rem;
+  padding: 0;
+  white-space: nowrap;
+  line-height: 64px !important;
+}
+
+@media (max-width: 992px){
+  #hammy {
+    position: absolute;
+    right: 10px !important;
+    top: 0 !important;
+    display: inline-block;
+    line-height: 64px !important;
+    font-size: 36.5px !important;
+    box-shadow: none;
+    background: none;
+  }
+  nav {
+    height: 64px !important;
+    line-height: 64px;
+  }
+  .bio-box {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+  .memo {
+    text-align: center;
+    font-size: 18px;
+  }
+  #nav-mobile-ul {
+    display: none;
+  }
 }

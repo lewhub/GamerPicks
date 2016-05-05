@@ -4,6 +4,7 @@
     <title>Gamer Picks</title>
     <!-- external css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css">
     <!-- end of external css  -->
     <!-- css  -->
     <link rel="stylesheet" href="css/style.css">
@@ -36,20 +37,20 @@
   </head>
   <body ng-app="GamerPicks" ng-controller="GlobalCtrl as gc">
     <!-- nav bar  -->
-    <nav id="nav-bar">
+    <nav id="nav-bar-nav">
       <div class="nav-wrapper">
-        <a ui-sref="featuredGames" class="brand-logo">Gamer Picks</a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><a ui-sref="oneGame">All Games</a></li>
+        <a ui-sref="featuredGames" class="brand-logo-a">Gamer Picks</a>
+        <ul id="nav-mobile-ul">
+          <!-- <li><a ui-sref="oneGame">All Games</a></li> -->
           <li><a ui-sref="categories">Categories</a></li>
           <li ng-if="!gc.isAuthed()"><a ui-sref="signup">Sign Up</a></li>
           <li ng-if="!gc.isAuthed()"><a ui-sref="login">Login</a></li>
           <li ng-if="gc.isAuthed()"><a ng-click="gc.logout()">Logout</a></li>
           <li><a ui-sref="profile">Profile</a></li>
-          <li><a ui-sref="categories">Categories</a></li>
           <li><a ui-sref="featuredGames">Home</a></li>
           <li><a ui-sref="about">About</a></li>
         </ul>
+        <i ng-click="gc.showNav()" id="hammy" class="fa fa-bars fa-2x dropdown-button btn" data-activates="nav-mobile-ul"></i>
       </div>
     </nav>
     <!-- end of nav bar  -->
