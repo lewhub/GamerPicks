@@ -8,6 +8,14 @@
       self.loginInfo = {}
       self.signupInfo = {}
 
+      self.showNav = function(){
+        console.log('clicked!')
+        var ul = angular.element('#nav-mobile-ul')
+        ul.addClass('dropdown-content')
+        // var navUl = angular.element('#nav-ul')
+        // navUl.css({"display": "inline-block !important", "font-size": "50px"})
+      }
+
       $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState){
         // console.log(toState)
         if (toState.name === "profile" && !self.isAuthed()){
